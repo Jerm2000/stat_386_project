@@ -9,7 +9,7 @@ hr = data[data["events"] == "home_run"].copy()
 
 # group by player_name and compute leaders
 leaders = (
-    hr.groupby("player_name")
+    hr.groupby("batter")
       .agg(
           hr_count=("events", "size"),
           avg_hr_distance=("hit_distance_sc", "mean"),
@@ -19,6 +19,7 @@ leaders = (
           avg_launch_speed=("launch_speed", "mean"),
           max_launch_speed=("launch_speed", "max"),
       )
+      .reset_index()
 )
 
 # filter to players with >= 5 home runs
@@ -30,28 +31,40 @@ leaders = leaders.sort_values("avg_hr_distance", ascending=False)
 #Rounding values
 leaders["avg_hr_distance"] = leaders["avg_hr_distance"].round(1)
 leaders["max_hr_distance"] = leaders["max_hr_distance"].round(1)
+leaders["avg_launch_speed"] = leaders["avg_launch_speed"].round(1)
+leaders["max_launch_speed"] = leaders["max_launch_speed"].round(1)
 
-leaders.to_csv("./data/hr_distance_leaders_2024.csv", index=True)
+leaders.to_csv("./data/hr_distance_leaders_2025.csv", index=True)
 
-hr_leaders = pd.read_csv("./data/hr_distance_leaders_2024.csv")
 barrel_leaders = pd.read_csv("./data/exit_velocity.csv")
 
 #Combining last name and first name into one column so both datasets match
 name_col = "last_name, first_name"
-barrel_leaders["player_name"] = (
-    barrel_leaders[name_col]
-    .str.split(", ")
-    .apply(lambda parts: f"{parts[1]} {parts[0]}" if len(parts) == 2 else barrel_leaders[name_col])
-)
+barrel_leaders["player_name"] = barrel_leaders[name_col].str.strip()
 
 #Only keeping columns we want to use
-savant_barrels = barrel_leaders[["player_name", "barrels", "brl_percent"]].copy()
+savant_barrels = barrel_leaders[["player_id", "player_name", "barrels", "brl_percent"]].copy()
 
 #Combining datasets on player name
-combined = leaders.merge(savant_barrels, on="player_name", how="left")
+combined = leaders.merge(savant_barrels, left_on = "batter", right_on="player_id", how="inner")
 
 #Rounding values
 combined["brl_percent"] = combined["brl_percent"].round(1)
-combined["barrels"] = combined["barrels"].round(1)
 
-combined.to_csv("./data/combined_leaders_2024.csv", index=False)
+combined = combined.drop(columns=["player_id"])
+
+combined = combined[
+    [
+        "player_name",     # first column
+        "batter",          # ID
+        "hr_count",
+        "avg_hr_distance",
+        "max_hr_distance",
+        "avg_launch_speed",
+        "max_launch_speed",
+        "barrels",
+        "brl_percent",
+    ]
+]
+
+combined.to_csv("./data/combined_leaders_2025.csv", index=False)
