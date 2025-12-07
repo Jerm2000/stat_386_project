@@ -91,3 +91,59 @@ def find_outliers(df: pd.DataFrame,
 
     return out_df[mask].sort_values("avg_hr_distance", ascending=False)
 
+def plot_max_vs_avg_distance(df: pd.DataFrame):
+    fig, ax = plt.subplots()
+    ax.scatter(df['avg_hr_distance'], df['max_hr_distance'])
+    ax.set_xlabel('Average HR Distance')
+    ax.set_ylabel('Max HR Distance')
+    ax.set_title('Max vs Average HR Distance')
+    return fig
+
+def plot_launch_speed_vs_distance(df: pd.DataFrame):
+    fig, ax = plt.subplots()
+    ax.scatter(df['avg_launch_speed'], df['avg_hr_distance'])
+    ax.set_xlabel('Average Launch Speed (Exit Velocity)')
+    ax.set_ylabel('Average HR Distance')
+    ax.set_title('Exit Velocity vs Average HR Distance')
+    return fig
+
+def plot_barrel_percent_vs_distance(df: pd.DataFrame):
+    fig, ax = plt.subplots()
+    ax.scatter(df['brl_percent'], df['avg_hr_distance'])
+    ax.set_xlabel('Barrel Percent')
+    ax.set_ylabel('Average HR Distance')
+    ax.set_title('Barrel Percent vs Average HR Distance')
+    return fig
+
+def plot_hr_count_vs_distance(df: pd.DataFrame):
+    # HR count (workload) vs avg HR distance
+    fig, ax = plt.subplots()
+    ax.scatter(df['hr_count'], df['avg_hr_distance'])
+    ax.set_xlabel('Home Run Count')
+    ax.set_ylabel('Average HR Distance')
+    ax.set_title('Workload vs Average HR Distance')
+    return fig
+
+
+if __name__ == "__main__":
+    raw = load_combined()
+    df = prepare_data(raw)
+
+    print("=== Longest vs Avg Distance ===")
+    print(longest_vs_avg_distance(df, n=5), "\n")
+
+    print("=== Correlation Table ===")
+    print(correlation_table(df), "\n")
+
+    print("=== Barrel Power Table ===")
+    print(barrel_power_table(df, n=5), "\n")
+
+    print("=== Outliers ===")
+    print(find_outliers(df).head(), "\n")
+
+plot_max_vs_avg_distance(df)
+plot_launch_speed_vs_distance(df)
+plot_barrel_percent_vs_distance(df)
+plot_hr_count_vs_distance(df)
+
+plt.show()
