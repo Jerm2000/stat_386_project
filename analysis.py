@@ -124,26 +124,3 @@ def plot_hr_count_vs_distance(df: pd.DataFrame):
     ax.set_title('Workload vs Average HR Distance')
     return fig
 
-
-if __name__ == "__main__":
-    raw = load_combined()
-    df = prepare_data(raw)
-
-    print("=== Longest vs Avg Distance ===")
-    print(longest_vs_avg_distance(df, n=5), "\n")
-
-    print("=== Correlation Table ===")
-    print(correlation_table(df), "\n")
-
-    print("=== Barrel Power Table ===")
-    print(barrel_power_table(df, n=5), "\n")
-
-    print("=== Outliers ===")
-    print(find_outliers(df).head(), "\n")
-
-plot_max_vs_avg_distance(df)
-plot_launch_speed_vs_distance(df)
-plot_barrel_percent_vs_distance(df)
-plot_hr_count_vs_distance(df)
-
-plt.show()
