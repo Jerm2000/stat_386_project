@@ -1,0 +1,76 @@
+---
+title: "MLB Statcast Hitter Leaders"
+format:
+    html:
+        toc: true
+---
+
+## Overview
+
+This project analyzes **MLB Statcast hitter leaders** from the 2025 season.  
+Our goal is to understand different aspects of **home run power**—a player's ability to hit the ball **hard** and **far**—using Statcast performance metrics.
+
+We built a Python analysis package and an interactive Streamlit app that allow users to explore relationships between hitting variables such as home run distance, exit velocity, and barrel rate.
+
+---
+
+## Data Description
+
+We use a cleaned dataset saved as: `data/combined_leaders_2025.csv`
+
+Each row represents a hitter. Important variables include:
+- **`hr_count`** – number of home runs hit  
+- **`avg_hr_distance`** – average distance (in feet) of a player's home runs  
+- **`max_hr_distance`** – longest home run the player hit  
+- **`avg_launch_speed`** – average exit velocity (speed of the ball off the bat)  
+- **`max_launch_speed`** – maximum exit velocity recorded  
+- **`barrels`** – count of “barrels,” (batted balls hit both **hard** and at **ideal launch angles**) 
+- **`brl_percent`** – barrel percentage (barrels divided by all batted balls)
+
+These metrics capture different components of hitting performance and power.
+
+---
+
+## Package & Analysis Functions
+
+The `analysis.py` module includes functions for:
+
+- loading and preparing the dataset  
+- summarizing longest vs average home run distance  
+- calculating correlations between metrics  
+- ranking players by barrel rate  
+- examining workload vs performance  
+- detecting outliers  
+- producing scatterplots for all major relationships  
+
+Examples of how to use these functions appear on the **Tutorial** page.
+
+---
+
+## Streamlit App
+
+We built a Streamlit dashboard to visualize hitter performance interactively.  
+Users can:
+
+- filter hitters by minimum home runs  
+- explore longest HR distances  
+- examine correlations  
+- visualize relationships between power metrics  
+- view statistical standouts  
+
+Run locally with:
+
+```bash
+streamlit run streamlit.py
+```
+
+---
+
+## Navigation
+
+Use:
+- **Tutorial** - to see example code and plots
+- **Reference** - for detailed function documentation
+
+
+
