@@ -1,0 +1,20 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "MLB Statcast Hitter Leaders"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: report.qmd
+        text: Final Report
+      - href: tutorial.qmd
+        text: Tutorial
+      - href: function_docs.qmd
+        text: Reference
+
+format:
+  html:
+    toc: true

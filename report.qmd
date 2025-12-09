@@ -1,0 +1,32 @@
+---
+title: "Final Project Report"
+format:
+  html:
+    toc: true
+---
+
+## Introduction
+
+Major League Baseball's (MLB) Statcast system provides some of the most detailed tracking data across all sports, measuring how hard, how far, and how efficiently players hit the ball. Included in these metrics are maximum values and average values. While the maximum metrics are the ones that usually generate headlines, they do not necessarily reflect the players performance as a whole. For example, a hitter may have the longest home run of the season but only be an okay hitter on average. 
+The purpose of this project is to explore the relationship between Statcast maximum leaders and Statcast average leaders for key hitting metrics. We want to know if players who top the leaderboards for a specific statistic had a one-off performance or show consistent skill. To answer this question we assembled and cleaned a dataset of Statcast hitting leaders for the 2025 season and built a Python analysis package capable of computing summaries, correlations, rankings, scatterplots, and outlier detection. We also created an interactive Streamlit app that allows users to filter hitters and visually explore how maximum performance relates to average outcomes.
+
+## Data
+
+*(Describe Statcast data sources, time frame, and key variables — fill in later.)*
+
+## Methods
+
+*(Summarize main analyses/metrics: distances, barrels, correlations, etc.)*
+
+## Results
+
+*(Present key findings with a couple of tables/plots.)*
+
+## Discussion
+
+*(Interpretation, limitations, and ideas for future work.)*
+
+## Reproducibility
+
+- Code repository: [GitHub repo](https://github.com/your-username/your-repo)
+- Interactive app: [Streamlit app](https://your-streamlit-url)

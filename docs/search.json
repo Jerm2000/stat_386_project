@@ -1,0 +1,93 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MLB Statcast Hitter Leaders",
+    "section": "",
+    "text": "This project analyzes MLB Statcast hitter leaders from the 2025 season.\nOur goal is to understand different aspects of home run power—a player’s ability to hit the ball hard and far—using Statcast performance metrics.\nWe built a Python analysis package and an interactive Streamlit app that allow users to explore relationships between hitting variables such as home run distance, exit velocity, and barrel rate."
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "MLB Statcast Hitter Leaders",
+    "section": "",
+    "text": "This project analyzes MLB Statcast hitter leaders from the 2025 season.\nOur goal is to understand different aspects of home run power—a player’s ability to hit the ball hard and far—using Statcast performance metrics.\nWe built a Python analysis package and an interactive Streamlit app that allow users to explore relationships between hitting variables such as home run distance, exit velocity, and barrel rate."
+  },
+  {
+    "objectID": "index.html#data-description",
+    "href": "index.html#data-description",
+    "title": "MLB Statcast Hitter Leaders",
+    "section": "Data Description",
+    "text": "Data Description\nWe use a cleaned dataset saved as: data/combined_leaders_2025.csv\nEach row represents a hitter. Important variables include: - hr_count – number of home runs hit\n- avg_hr_distance – average distance (in feet) of a player’s home runs\n- max_hr_distance – longest home run the player hit\n- avg_launch_speed – average exit velocity (speed of the ball off the bat)\n- max_launch_speed – maximum exit velocity recorded\n- barrels – count of “barrels,” (batted balls hit both hard and at ideal launch angles) - brl_percent – barrel percentage (barrels divided by all batted balls)\nThese metrics capture different components of hitting performance and power."
+  },
+  {
+    "objectID": "index.html#package-analysis-functions",
+    "href": "index.html#package-analysis-functions",
+    "title": "MLB Statcast Hitter Leaders",
+    "section": "Package & Analysis Functions",
+    "text": "Package & Analysis Functions\nThe analysis.py module includes functions for:\n\nloading and preparing the dataset\n\nsummarizing longest vs average home run distance\n\ncalculating correlations between metrics\n\nranking players by barrel rate\n\nexamining workload vs performance\n\ndetecting outliers\n\nproducing scatterplots for all major relationships\n\nExamples of how to use these functions appear on the Tutorial page."
+  },
+  {
+    "objectID": "index.html#streamlit-app",
+    "href": "index.html#streamlit-app",
+    "title": "MLB Statcast Hitter Leaders",
+    "section": "Streamlit App",
+    "text": "Streamlit App\nWe built a Streamlit dashboard to visualize hitter performance interactively.\nUsers can:\n\nfilter hitters by minimum home runs\n\nexplore longest HR distances\n\nexamine correlations\n\nvisualize relationships between power metrics\n\nview statistical standouts\n\nRun locally with:\nstreamlit run streamlit.py"
+  },
+  {
+    "objectID": "index.html#navigation",
+    "href": "index.html#navigation",
+    "title": "MLB Statcast Hitter Leaders",
+    "section": "Navigation",
+    "text": "Navigation\nUse: - Tutorial - to see example code and plots - Reference - for detailed function documentation"
+  },
+  {
+    "objectID": "report.html",
+    "href": "report.html",
+    "title": "Final Project Report",
+    "section": "",
+    "text": "Major League Baseball’s (MLB) Statcast system provides some of the most detailed tracking data across all sports, measuring how hard, how far, and how efficiently players hit the ball. Included in these metrics are maximum values and average values. While the maximum metrics are the ones that usually generate headlines, they do not necessarily reflect the players performance as a whole. For example, a hitter may have the longest home run of the season but only be an okay hitter on average. The purpose of this project is to explore the relationship between Statcast maximum leaders and Statcast average leaders for key hitting metrics. We want to know if players who top the leaderboards for a specific statistic had a one-off performance or show consistent skill. To answer this question we assembled and cleaned a dataset of Statcast hitting leaders for the 2025 season and built a Python analysis package capable of computing summaries, correlations, rankings, scatterplots, and outlier detection. We also created an interactive Streamlit app that allows users to filter hitters and visually explore how maximum performance relates to average outcomes."
+  },
+  {
+    "objectID": "report.html#introduction",
+    "href": "report.html#introduction",
+    "title": "Final Project Report",
+    "section": "",
+    "text": "Major League Baseball’s (MLB) Statcast system provides some of the most detailed tracking data across all sports, measuring how hard, how far, and how efficiently players hit the ball. Included in these metrics are maximum values and average values. While the maximum metrics are the ones that usually generate headlines, they do not necessarily reflect the players performance as a whole. For example, a hitter may have the longest home run of the season but only be an okay hitter on average. The purpose of this project is to explore the relationship between Statcast maximum leaders and Statcast average leaders for key hitting metrics. We want to know if players who top the leaderboards for a specific statistic had a one-off performance or show consistent skill. To answer this question we assembled and cleaned a dataset of Statcast hitting leaders for the 2025 season and built a Python analysis package capable of computing summaries, correlations, rankings, scatterplots, and outlier detection. We also created an interactive Streamlit app that allows users to filter hitters and visually explore how maximum performance relates to average outcomes."
+  },
+  {
+    "objectID": "report.html#data",
+    "href": "report.html#data",
+    "title": "Final Project Report",
+    "section": "Data",
+    "text": "Data\n(Describe Statcast data sources, time frame, and key variables — fill in later.)"
+  },
+  {
+    "objectID": "report.html#methods",
+    "href": "report.html#methods",
+    "title": "Final Project Report",
+    "section": "Methods",
+    "text": "Methods\n(Summarize main analyses/metrics: distances, barrels, correlations, etc.)"
+  },
+  {
+    "objectID": "report.html#results",
+    "href": "report.html#results",
+    "title": "Final Project Report",
+    "section": "Results",
+    "text": "Results\n(Present key findings with a couple of tables/plots.)"
+  },
+  {
+    "objectID": "report.html#discussion",
+    "href": "report.html#discussion",
+    "title": "Final Project Report",
+    "section": "Discussion",
+    "text": "Discussion\n(Interpretation, limitations, and ideas for future work.)"
+  },
+  {
+    "objectID": "report.html#reproducibility",
+    "href": "report.html#reproducibility",
+    "title": "Final Project Report",
+    "section": "Reproducibility",
+    "text": "Reproducibility\n\nCode repository: GitHub repo\nInteractive app: Streamlit app"
+  }
+]
