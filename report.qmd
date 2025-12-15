@@ -12,11 +12,68 @@ The purpose of this project is to explore the relationship between Statcast maxi
 
 ## Data
 
-*(Describe Statcast data sources, time frame, and key variables — fill in later.)*
+The data used in this project come from MLB Statcast hitter leader statistics for the 2025 regular season. Statcast is MLB's advanced tracking system that records detailed information about every batted ball using radar and camera-based technology. This allows more advanced statistics to be examined like how hard a player hits the ball, how far it travels, and how consistently the player's performance occurs over time.
+
+The dataset was obtained through Sportradar's MLB Statcast Leaders API, which gives leaderboard-level summaries for various hitting metrics. The data were collected once and stored on GitHub to make sure the analyses were consistent and reproducible. The final cleaned dataset used throughout this project is saved as: data/combined_leaders_2025.csv. Each row in the dataset represents a hitter who appeared on at least one Statcast leaderboard during the 2025 season.
+
+### Variables of Interest 
+
+The analysis looks at both peak performance and average performance so that one-off standout outcomes and overall consistency could be compared. The  variables focused on were:
+* hr_count: total number of home runs hit by a player during the season
+* avg_hr_distance: average distance(in feet) of a player's home runs
+* max_hr_distance: longest home run hit by the player
+* avg_launch_speed: average exit velocity (speed of the ball off the bat)
+* max_launch_speed: maximum exit velocity recorded for the player
+* barrels: number of "barrels" (batted balls hit with an optimal combination of speed and launch angle)
+* brl_percent: barrel percentage (proportion of a player's batted balls classified as barrels)
+
+With all of these variables, different components of home run power can be described like raw strength, quality of contact,and consistency of performance.
+
+### Data Preparation
+
+Before analysis, the data were cleaned and filtered using custom Python functions created for this project. This included removing observations with missing values in key variables and filtering out players with very low home run totals to reduce noise from small sample sizes. This ensured that when comparing hitters, meaningful patterns were found, not isolated events.
 
 ## Methods
 
-*(Summarize main analyses/metrics: distances, barrels, correlations, etc.)*
+Our workflow involved data collection, wrangling, analysis, and communication. These steps were done in Python and organized into reusable scripts and functions.
+
+### Data Collection and Dataset Construction
+
+To build the hitter dataset, we pulled pitch-by-pitch Statcast data for the full 2025 regular season using the pybaseball.statcast() function. We then filtered the raw Statcast data to only home run events since our research question aims to find the relationship between maximum and average outcomes. 
+
+We then used the home run only dataset and aggregated statistics at the player level by grouping on the batter. For each hitter, we computed: hr_count, avg_hr_distance, max_hr_distance, avg_launch_speed, and max_launch_speed. to reduce noise from small sample sizes, we selected hitter with at least 5 home runs. We also rounded distance and exit velocity for improved readability. This created the first file hr_distance_leaders_2025.csv.
+
+Next, we read a second dataset that had barrel statistics, loaded from exit_velocity.csv. To combine the two sources, we made a consistent player name field and kept only the variables needed for analysis (barrels and brl_percent). We then merged the two datasets using player identifiers (linking the Statcast-derived hitter table with the barrel dataset on player ID). The merger of these two datasets is the final analysis dataset we used throughout the project: data/combined_leaders_2025.csv.
+
+### Data Filtering and Preparation for Analysis
+
+Before getting analysis results, we further cleaned the data in the analysis package. We removed observations with missing values in key variables (home run distance, launch speed, and barrel metrics), and we kept the minimum home run threshold of 5. This made sure that comparisons were of complete and meaningful data.
+
+### Summary Tables 
+
+To assist us in answering our research question, we created several summary tables:
+* Longest vs. average home run distance: We ranked hitters by max_hr_distance and reported each player's avg_hr_distance along with supporting context like home run totals and exit velocity metrics.
+* Barrel and power indicators: We ranked hitters by brl_percent and reported related power variables such as home run distance and exit velocity metrics to compare quality of contact profiles across hitters.
+* Workload vs. performance: We examined the relationship between workload (hr_count) and performance (avg_hr_distance) to explore whether players with more home runs also tend to hit longer home runs on average.
+
+### Correlation Analysis
+
+In order to quantify relationships among key power metrics, we computed a Pearson correlation matrix across distance, exit velocity, barrels, barrel percentage, and home run totals. This allows for a high-level view of which metric tend to move together and which capture different components of home run power.
+
+### Outlier Detection
+
+A central part of our question was extreme performances so we identified standout hitters using an outlier method. We computed z-scores for select variables: z = (x-u)/o 
+When hitter exceeded a threshold of 2.5 and any of the selected metrics, they were flagged. However, our goal was not to treat them as errors but use them to highlight strong performances and decide whether they reflect consistent skill or isolated peaks.
+
+### Visualization
+
+Finally, we used scatter plots to visualize the relationships focused on in our research. These included: 
+* max vs. average home run distance
+* exit velocity vs average home run distance
+* barrel percentage vs. average home run percentage
+* home run count vs average home run distance
+
+These help to find relationships because then show trends, clusters, and potential standout hitters.
 
 ## Results
 
