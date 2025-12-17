@@ -277,14 +277,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-3-load-and-prepare-the-data-in-python" class="level2">
 <h2 class="anchored" data-anchor-id="step-3-load-and-prepare-the-data-in-python">Step 3: Load and prepare the data in Python</h2>
 <p>Create a new file in the repo root called <code>tutorial_run.py</code> (or open a Python notebook) and start with the following.</p>
-<div id="1335b812" class="cell" data-execution_count="1">
+<div id="304f2e5c" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> load_combined, prepare_data</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>df_raw <span class="op">=</span> load_combined()</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> prepare_data(df_raw, min_hr<span class="op">=</span><span class="dv">5</span>)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>df_raw.shape, df.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="111">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>((240, 9), (240, 9))</code></pre>
 </div>
 </div>
@@ -304,11 +304,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>These tables mirror the comparisons used in the final report.</p>
 <section id="longest-hr-vs-average-hr-distance" class="level3">
 <h3 class="anchored" data-anchor-id="longest-hr-vs-average-hr-distance">4.1 Longest HR vs average HR distance</h3>
-<div id="7e9f2985" class="cell" data-execution_count="2">
+<div id="e7092caa" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> longest_vs_avg_distance</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>longest_vs_avg_distance(df, n<span class="op">=</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="112">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
 
@@ -426,11 +426,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="barrel-percentage-leaders-quality-of-contact" class="level3">
 <h3 class="anchored" data-anchor-id="barrel-percentage-leaders-quality-of-contact">4.2 Barrel percentage leaders (quality of contact)</h3>
-<div id="f07bbee8" class="cell" data-execution_count="3">
+<div id="a3ed0b70" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> barrel_power_table</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>barrel_power_table(df, n<span class="op">=</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="113">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -559,11 +559,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="workload-vs-average-distance" class="level3">
 <h3 class="anchored" data-anchor-id="workload-vs-average-distance">4.3 Workload vs average distance</h3>
-<div id="c8c90cba" class="cell" data-execution_count="4">
+<div id="8bb96606" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> workload_vs_distance</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>workload_vs_distance(df).sort_values(<span class="st">"hr_count"</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="114">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
 
@@ -650,11 +650,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-5-correlations-among-key-metrics" class="level2">
 <h2 class="anchored" data-anchor-id="step-5-correlations-among-key-metrics">Step 5: Correlations among key metrics</h2>
 <p>To get a high-level summary of how the metrics relate:</p>
-<div id="5037271c" class="cell" data-execution_count="5">
+<div id="2f20880f" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> correlation_table</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>correlation_table(df).<span class="bu">round</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="115">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -754,7 +754,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-6-identify-standout-hitters-outliers" class="level2">
 <h2 class="anchored" data-anchor-id="step-6-identify-standout-hitters-outliers">Step 6: Identify standout hitters (outliers)</h2>
 <p>Outliers are flagged using z-scores. A hitter is flagged if they are unusually extreme on <strong>any</strong> selected metric.</p>
-<div id="22f51c95" class="cell" data-execution_count="6">
+<div id="57d6e111" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> find_outliers</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>outliers <span class="op">=</span> find_outliers(</span>
@@ -770,7 +770,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"max_hr_distance"</span>, <span class="st">"max_hr_distance_z"</span>,</span>
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"avg_launch_speed"</span>, <span class="st">"avg_launch_speed_z"</span>,</span>
 <span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>]].head(<span class="dv">25</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="116">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 
 
@@ -880,7 +880,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The plotting functions return Matplotlib <code>Figure</code> objects. In a notebook or Quarto, they will display automatically when they are the last line. In a plain Python script, you should call <code>plt.show()</code> after creating the figure.</p>
 <section id="max-vs-average-home-run-distance" class="level3">
 <h3 class="anchored" data-anchor-id="max-vs-average-home-run-distance">7.1 Max vs average home run distance</h3>
-<div id="55e6c5b1" class="cell" data-execution_count="7">
+<div id="4b41bcd4" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> plot_max_vs_avg_distance</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -897,7 +897,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="exit-velocity-vs-average-home-run-distance" class="level3">
 <h3 class="anchored" data-anchor-id="exit-velocity-vs-average-home-run-distance">7.2 Exit velocity vs average home run distance</h3>
-<div id="03b71a5f" class="cell" data-execution_count="8">
+<div id="4739507b" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> plot_launch_speed_vs_distance</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -914,7 +914,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="barrel-percentage-vs-average-home-run-distance" class="level3">
 <h3 class="anchored" data-anchor-id="barrel-percentage-vs-average-home-run-distance">7.3 Barrel percentage vs average home run distance</h3>
-<div id="2b430fc9" class="cell" data-execution_count="9">
+<div id="a418ecae" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> plot_barrel_percent_vs_distance</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -931,7 +931,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="home-run-count-vs-average-home-run-distance" class="level3">
 <h3 class="anchored" data-anchor-id="home-run-count-vs-average-home-run-distance">7.4 Home run count vs average home run distance</h3>
-<div id="1a11b656" class="cell" data-execution_count="10">
+<div id="91509ccb" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> plot_hr_count_vs_distance</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>

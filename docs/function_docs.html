@@ -341,7 +341,7 @@ Barrel totals and barrel percentage are imported from <code>data/exit_velocity.c
 <p><strong>Parameters</strong> - <code>path</code> (<code>Path | str</code>, optional): Path to the combined CSV file. Defaults to <code>data/combined_leaders_2025.csv</code>.</p>
 <p><strong>Returns</strong> - <code>pd.DataFrame</code>: DataFrame containing hitter-level statistics.</p>
 <p><strong>Example</strong></p>
-<div id="be7765de" class="cell" data-execution_count="1">
+<div id="f5442dde" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> load_combined</span>
@@ -446,7 +446,7 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <p><strong>Returns</strong> - <code>pd.DataFrame</code>: Filtered copy of the DataFrame.</p>
 <p><strong>Notes</strong> - The function returns a copy and does not modify the input DataFrame. - Most downstream functions assume this filtering step has already been applied.</p>
 <p><strong>Example</strong></p>
-<div id="245fef58" class="cell" data-execution_count="2">
+<div id="ce2b8a98" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> load_combined, prepare_data</span>
@@ -470,7 +470,7 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <p><strong>Parameters</strong> - <code>df</code> (<code>pd.DataFrame</code>): Cleaned dataset. - <code>n</code> (<code>int</code>, default <code>20</code>): Number of hitters to return.</p>
 <p><strong>Returns</strong> - <code>pd.DataFrame</code>: Top <code>n</code> hitters sorted by <code>max_hr_distance</code>.</p>
 <p><strong>Example</strong></p>
-<div id="cf2eec11" class="cell" data-execution_count="3">
+<div id="220c5e99" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> longest_vs_avg_distance</span>
@@ -599,7 +599,7 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <p><strong>Parameters</strong> - <code>df</code> (<code>pd.DataFrame</code>): Cleaned dataset. - <code>n</code> (<code>int</code>, default <code>20</code>): Number of hitters to return.</p>
 <p><strong>Returns</strong> - <code>pd.DataFrame</code>: Top <code>n</code> hitters sorted by <code>brl_percent</code>.</p>
 <p><strong>Example</strong></p>
-<div id="0eebe0f1" class="cell" data-execution_count="4">
+<div id="af330600" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> barrel_power_table</span>
@@ -739,7 +739,7 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <p><strong>Parameters</strong> - <code>df</code> (<code>pd.DataFrame</code>): Cleaned dataset.</p>
 <p><strong>Returns</strong> - <code>pd.DataFrame</code> with columns: - <code>player_name</code> - <code>hr_count</code> - <code>avg_hr_distance</code></p>
 <p><strong>Example</strong></p>
-<div id="4b7b93cc" class="cell" data-execution_count="5">
+<div id="9e8ae86d" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> workload_vs_distance</span>
@@ -809,7 +809,7 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <p><strong>Parameters</strong> - <code>df</code> (<code>pd.DataFrame</code>): Cleaned dataset.</p>
 <p><strong>Returns</strong> - <code>pd.DataFrame</code>: Correlation matrix.</p>
 <p><strong>Example</strong></p>
-<div id="487fd0b4" class="cell" data-execution_count="6">
+<div id="ef54251e" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> correlation_table</span>
@@ -920,7 +920,7 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <p><strong>Returns</strong> - <code>pd.DataFrame</code>: Subset of hitters flagged as outliers.</p>
 <p><strong>Notes</strong> - Z-scores are computed using population standard deviation (<code>ddof=0</code>). - A hitter is flagged if <strong>any</strong> selected metric exceeds the threshold in absolute value.</p>
 <p><strong>Example</strong></p>
-<div id="30bed76d" class="cell" data-execution_count="7">
+<div id="b1d6d2ad" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> find_outliers</span>
@@ -991,7 +991,7 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <p><strong>Purpose</strong> Visualize the relationship between peak and typical power.</p>
 <p><strong>Returns</strong> - Matplotlib graph</p>
 <p><strong>Example</strong></p>
-<div id="cd6647fb" class="cell" data-execution_count="8">
+<div id="7a73be0b" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> plot_max_vs_avg_distance</span>
