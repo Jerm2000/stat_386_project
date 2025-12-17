@@ -4,10 +4,19 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-DATA_DIR = Path("data")
-COMBINED_CSV = DATA_DIR / "combined_leaders_2025.csv"
+DEFAULT_CANDIDATES = [
+    Path("data/combined_leaders_2025.csv"),  # works when running from repo root
+]
 
-def load_combined(path: Path | str = COMBINED_CSV) -> pd.DataFrame:
+def load_combined(path: Path | str | None = None) -> pd.DataFrame:
+    if path is None:
+        for p in DEFAULT_CANDIDATES:
+            if p.exists():
+                return pd.read_csv(p)
+        raise FileNotFoundError(
+            "Could not find combined_leaders_2025.csv. "
+            "Pass `path=...` or generate the file first."
+        )
     return pd.read_csv(path)
 
 def prepare_data(df: pd.DataFrame, min_hr: int = 5, dropna_cols: Iterable[str] | None = None,) -> pd.DataFrame:
