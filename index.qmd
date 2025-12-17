@@ -73,6 +73,8 @@ or by following [this link to the streamlit app](https://cjecma74qyqcmmncdzbtfv.
 
 Use:
 
+- **Report** - to see the final project report
+
 - **Tutorial** - to see example code and plots
 
 - **Documentation** - for detailed function documentation
