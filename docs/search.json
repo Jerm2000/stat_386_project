@@ -18,7 +18,7 @@
     "href": "index.html#data-description",
     "title": "MLB Statcast Hitter Leaders",
     "section": "Data Description",
-    "text": "Data Description\nWe use a cleaned dataset saved as: data/combined_leaders_2025.csv\nEach row represents a hitter. Important variables include: - hr_count – number of home runs hit\n- avg_hr_distance – average distance (in feet) of a player’s home runs\n- max_hr_distance – longest home run the player hit\n- avg_launch_speed – average exit velocity (speed of the ball off the bat)\n- max_launch_speed – maximum exit velocity recorded\n- barrels – count of “barrels,” (batted balls hit both hard and at ideal launch angles) - brl_percent – barrel percentage (barrels divided by all batted balls)\nThese metrics capture different components of hitting performance and power."
+    "text": "Data Description\nWe use a cleaned dataset saved as: data/combined_leaders_2025.csv\nEach row represents a hitter. Important variables include:\n\nhr_count – number of home runs hit\n\navg_hr_distance – average distance (in feet) of a player’s home runs\n\nmax_hr_distance – longest home run the player hit\n\navg_launch_speed – average exit velocity (speed of the ball off the bat)\n\nmax_launch_speed – maximum exit velocity recorded\n\nbarrels – count of “barrels,” (batted balls hit both hard and at ideal launch angles)\nbrl_percent – barrel percentage (barrels divided by all batted balls)\n\nThese metrics capture different components of hitting performance and power."
   },
   {
     "objectID": "index.html#package-analysis-functions",
@@ -32,7 +32,7 @@
     "href": "index.html#streamlit-app",
     "title": "MLB Statcast Hitter Leaders",
     "section": "Streamlit App",
-    "text": "Streamlit App\nWe built a Streamlit dashboard to visualize hitter performance interactively.\nUsers can:\n\nfilter hitters by minimum home runs\n\nexplore longest HR distances\n\nexamine correlations\n\nvisualize relationships between power metrics\n\nview statistical standouts\n\nRun locally with:\nstreamlit run streamlit.py"
+    "text": "Streamlit App\nWe built a Streamlit dashboard to visualize hitter performance interactively.\nUsers can:\n\nfilter hitters by minimum home runs\n\nexplore longest HR distances\n\nexamine correlations\n\nvisualize relationships between power metrics\n\nview statistical standouts\n\nRun locally with:\nstreamlit run streamlit.py\nor by following this link to the streamlit app."
   },
   {
     "objectID": "index.html#navigation",

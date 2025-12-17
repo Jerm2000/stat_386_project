@@ -19,12 +19,14 @@ We built a Python analysis package and an interactive Streamlit app that allow u
 We use a cleaned dataset saved as: `data/combined_leaders_2025.csv`
 
 Each row represents a hitter. Important variables include:
+
 - **`hr_count`** – number of home runs hit  
 - **`avg_hr_distance`** – average distance (in feet) of a player's home runs  
 - **`max_hr_distance`** – longest home run the player hit  
 - **`avg_launch_speed`** – average exit velocity (speed of the ball off the bat)  
 - **`max_launch_speed`** – maximum exit velocity recorded  
 - **`barrels`** – count of “barrels,” (batted balls hit both **hard** and at **ideal launch angles**) 
+
 - **`brl_percent`** – barrel percentage (barrels divided by all batted balls)
 
 These metrics capture different components of hitting performance and power.
@@ -63,7 +65,7 @@ Run locally with:
 ```bash
 streamlit run streamlit.py
 ```
-or by following [this link to the streamlit app] (https://cjecma74qyqcmmncdzbtfv.streamlit.app)
+or by following [this link to the streamlit app](https://cjecma74qyqcmmncdzbtfv.streamlit.app).
 
 ---
 
