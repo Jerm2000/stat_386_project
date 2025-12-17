@@ -1,5 +1,5 @@
 ---
-title: "MLB Statcast Hitter Leaders"
+title: "MLB Statcast Hitting Leaders"
 format:
     html:
         toc: true
@@ -7,7 +7,7 @@ format:
 
 ## Overview
 
-This project analyzes **MLB Statcast hitter leaders** from the 2025 season.  
+This project analyzes **MLB Statcast hitting leaders** from the 2025 season.  
 Our goal is to understand different aspects of **home run power**—a player's ability to hit the ball **hard** and **far**—using Statcast performance metrics.
 
 We built a Python analysis package and an interactive Streamlit app that allow users to explore relationships between hitting variables such as home run distance, exit velocity, and barrel rate.
