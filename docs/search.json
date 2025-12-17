@@ -65,42 +65,42 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "MLB Statcast Hitter Leaders",
+    "title": "MLB Statcast Hitting Leaders",
     "section": "",
-    "text": "This project analyzes MLB Statcast hitter leaders from the 2025 season.\nOur goal is to understand different aspects of home run power—a player’s ability to hit the ball hard and far—using Statcast performance metrics.\nWe built a Python analysis package and an interactive Streamlit app that allow users to explore relationships between hitting variables such as home run distance, exit velocity, and barrel rate."
+    "text": "This project analyzes MLB Statcast hitting leaders from the 2025 season.\nOur goal is to understand different aspects of home run power—a player’s ability to hit the ball hard and far—using Statcast performance metrics.\nWe built a Python analysis package and an interactive Streamlit app that allow users to explore relationships between hitting variables such as home run distance, exit velocity, and barrel rate."
   },
   {
     "objectID": "index.html#overview",
     "href": "index.html#overview",
-    "title": "MLB Statcast Hitter Leaders",
+    "title": "MLB Statcast Hitting Leaders",
     "section": "",
-    "text": "This project analyzes MLB Statcast hitter leaders from the 2025 season.\nOur goal is to understand different aspects of home run power—a player’s ability to hit the ball hard and far—using Statcast performance metrics.\nWe built a Python analysis package and an interactive Streamlit app that allow users to explore relationships between hitting variables such as home run distance, exit velocity, and barrel rate."
+    "text": "This project analyzes MLB Statcast hitting leaders from the 2025 season.\nOur goal is to understand different aspects of home run power—a player’s ability to hit the ball hard and far—using Statcast performance metrics.\nWe built a Python analysis package and an interactive Streamlit app that allow users to explore relationships between hitting variables such as home run distance, exit velocity, and barrel rate."
   },
   {
     "objectID": "index.html#data-description",
     "href": "index.html#data-description",
-    "title": "MLB Statcast Hitter Leaders",
+    "title": "MLB Statcast Hitting Leaders",
     "section": "Data Description",
     "text": "Data Description\nWe use a cleaned dataset saved as: data/combined_leaders_2025.csv\nEach row represents a hitter. Important variables include:\n\nhr_count – number of home runs hit\n\navg_hr_distance – average distance (in feet) of a player’s home runs\n\nmax_hr_distance – longest home run the player hit\n\navg_launch_speed – average exit velocity (speed of the ball off the bat)\n\nmax_launch_speed – maximum exit velocity recorded\n\nbarrels – count of “barrels,” (batted balls hit both hard and at ideal launch angles)\nbrl_percent – barrel percentage (barrels divided by all batted balls)\n\nThese metrics capture different components of hitting performance and power."
   },
   {
     "objectID": "index.html#package-analysis-functions",
     "href": "index.html#package-analysis-functions",
-    "title": "MLB Statcast Hitter Leaders",
+    "title": "MLB Statcast Hitting Leaders",
     "section": "Package & Analysis Functions",
     "text": "Package & Analysis Functions\nThe analysis.py module includes functions for:\n\nloading and preparing the dataset\n\nsummarizing longest vs average home run distance\n\ncalculating correlations between metrics\n\nranking players by barrel rate\n\nexamining workload vs performance\n\ndetecting outliers\n\nproducing scatterplots for all major relationships\n\nExamples of how to use these functions appear on the Tutorial page."
   },
   {
     "objectID": "index.html#streamlit-app",
     "href": "index.html#streamlit-app",
-    "title": "MLB Statcast Hitter Leaders",
+    "title": "MLB Statcast Hitting Leaders",
     "section": "Streamlit App",
     "text": "Streamlit App\nWe built a Streamlit dashboard to visualize hitter performance interactively.\nUsers can:\n\nfilter hitters by minimum home runs\n\nexplore longest HR distances\n\nexamine correlations\n\nvisualize relationships between power metrics\n\nview statistical standouts\n\nRun locally with:\nstreamlit run streamlit.py\nor by following this link to the streamlit app."
   },
   {
     "objectID": "index.html#navigation",
     "href": "index.html#navigation",
-    "title": "MLB Statcast Hitter Leaders",
+    "title": "MLB Statcast Hitting Leaders",
     "section": "Navigation",
     "text": "Navigation\nUse: - Tutorial - to see example code and plots - Reference - for detailed function documentation"
   },
