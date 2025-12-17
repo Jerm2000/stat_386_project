@@ -95,7 +95,7 @@
     "href": "index.html#streamlit-app",
     "title": "MLB Statcast Hitting Leaders",
     "section": "Streamlit App",
-    "text": "Streamlit App\nWe built a Streamlit dashboard to visualize hitter performance interactively.\nUsers can:\n\nfilter hitters by minimum home runs\n\nexplore longest HR distances\n\nexamine correlations\n\nvisualize relationships between power metrics\n\nview statistical standouts\n\nRun locally with:\nstreamlit run streamlit.py\nor by following this link to the streamlit app."
+    "text": "Streamlit App\nWe built a Streamlit dashboard to visualize hitter performance interactively.\nUsers can:\n\nfilter hitters by minimum home runs\n\nexplore longest HR distances\n\nexamine correlations\n\nvisualize relationships between power metrics\n\nview statistical standouts\n\nRun locally with:\nstreamlit run streamlit.py\nor visit our hosted streamlit app."
   },
   {
     "objectID": "index.html#navigation",

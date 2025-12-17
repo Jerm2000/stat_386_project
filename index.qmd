@@ -45,7 +45,7 @@ The `analysis.py` module includes functions for:
 - detecting outliers  
 - producing scatterplots for all major relationships  
 
-Examples of how to use these functions appear on the **Tutorial** page.
+Examples of how to use these functions appear on the [Tutorial](./tutorial.html) page.
 
 ---
 
@@ -65,7 +65,7 @@ Run locally with:
 ```bash
 streamlit run streamlit.py
 ```
-or by following [this link to the streamlit app](https://cjecma74qyqcmmncdzbtfv.streamlit.app).
+or visit our hosted [streamlit app](https://cjecma74qyqcmmncdzbtfv.streamlit.app).
 
 ---
 
