@@ -83,7 +83,7 @@ These visualizations help to show trends, clusters, and potential standout hitte
 #|echo: false
 #| warning: false
 #| message: false
-from analysis import (
+from stat386_project.analysis import (
 load_combined, prepare_data,
 longest_vs_avg_distance, correlation_table, barrel_power_table, find_outliers,
 plot_max_vs_avg_distance, plot_launch_speed_vs_distance, plot_barrel_percent_vs_distance, plot_hr_count_vs_distance

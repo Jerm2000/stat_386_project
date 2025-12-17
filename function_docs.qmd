@@ -139,7 +139,7 @@ Loads the combined hitter dataset from disk.
 
 **Example**
 ```{python}
-from analysis import load_combined
+from stat386_project.analysis import load_combined
 
 df_raw = load_combined()
 df_raw.head()
@@ -173,7 +173,7 @@ Filters and cleans the dataset used for analysis.
 
 **Example**
 ```{python}
-from analysis import load_combined, prepare_data
+from stat386_project.analysis import load_combined, prepare_data
 
 df = prepare_data(load_combined(), min_hr=5)
 df.shape
@@ -199,7 +199,7 @@ Compare extreme peak power with typical home run distance.
 
 **Example**
 ```{python}
-from analysis import longest_vs_avg_distance
+from stat386_project.analysis import longest_vs_avg_distance
 
 longest_vs_avg_distance(df, n=10)
 ```
@@ -222,7 +222,7 @@ Examine how contact quality aligns with distance and exit velocity metrics.
 
 **Example**
 ```{python}
-from analysis import barrel_power_table
+from stat386_project.analysis import barrel_power_table
 
 barrel_power_table(df, n=10)
 ```
@@ -247,7 +247,7 @@ Explore whether hitters with more home runs tend to hit longer home runs on aver
 
 **Example**
 ```{python}
-from analysis import workload_vs_distance
+from stat386_project.analysis import workload_vs_distance
 
 workload_vs_distance(df).head()
 ```
@@ -280,7 +280,7 @@ Quantify linear relationships among distance, exit velocity, barrel metrics, and
 
 **Example**
 ```{python}
-from analysis import correlation_table
+from stat386_project.analysis import correlation_table
 
 correlation_table(df).round(3)
 ```
@@ -308,7 +308,7 @@ Highlight standout performance profiles rather than treat them as errors.
 
 **Example**
 ```{python}
-from analysis import find_outliers
+from stat386_project.analysis import find_outliers
 
 outliers = find_outliers(df)
 outliers[["player_name", "avg_hr_distance", "avg_hr_distance_z"]].head()
@@ -334,7 +334,7 @@ Visualize the relationship between peak and typical power.
 
 **Example**
 ```{python}
-from analysis import plot_max_vs_avg_distance
+from stat386_project.analysis import plot_max_vs_avg_distance
 
 fig = plot_max_vs_avg_distance(df)
 fig

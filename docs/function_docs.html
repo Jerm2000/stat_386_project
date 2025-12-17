@@ -341,10 +341,10 @@ Barrel totals and barrel percentage are imported from <code>data/exit_velocity.c
 <p><strong>Parameters</strong> - <code>path</code> (<code>Path | str</code>, optional): Path to the combined CSV file. Defaults to <code>data/combined_leaders_2025.csv</code>.</p>
 <p><strong>Returns</strong> - <code>pd.DataFrame</code>: DataFrame containing hitter-level statistics.</p>
 <p><strong>Example</strong></p>
-<div id="85b3f14c" class="cell" data-execution_count="1">
+<div id="0161d479" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> load_combined</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386_project.analysis <span class="im">import</span> load_combined</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df_raw <span class="op">=</span> load_combined()</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df_raw.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -446,10 +446,10 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <p><strong>Returns</strong> - <code>pd.DataFrame</code>: Filtered copy of the DataFrame.</p>
 <p><strong>Notes</strong> - The function returns a copy and does not modify the input DataFrame. - Most downstream functions assume this filtering step has already been applied.</p>
 <p><strong>Example</strong></p>
-<div id="82a3853a" class="cell" data-execution_count="2">
+<div id="f45c1769" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> load_combined, prepare_data</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386_project.analysis <span class="im">import</span> load_combined, prepare_data</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> prepare_data(load_combined(), min_hr<span class="op">=</span><span class="dv">5</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>df.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -470,10 +470,10 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <p><strong>Parameters</strong> - <code>df</code> (<code>pd.DataFrame</code>): Cleaned dataset. - <code>n</code> (<code>int</code>, default <code>20</code>): Number of hitters to return.</p>
 <p><strong>Returns</strong> - <code>pd.DataFrame</code>: Top <code>n</code> hitters sorted by <code>max_hr_distance</code>.</p>
 <p><strong>Example</strong></p>
-<div id="e565ba77" class="cell" data-execution_count="3">
+<div id="4234cb7e" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> longest_vs_avg_distance</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386_project.analysis <span class="im">import</span> longest_vs_avg_distance</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>longest_vs_avg_distance(df, n<span class="op">=</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
@@ -599,10 +599,10 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <p><strong>Parameters</strong> - <code>df</code> (<code>pd.DataFrame</code>): Cleaned dataset. - <code>n</code> (<code>int</code>, default <code>20</code>): Number of hitters to return.</p>
 <p><strong>Returns</strong> - <code>pd.DataFrame</code>: Top <code>n</code> hitters sorted by <code>brl_percent</code>.</p>
 <p><strong>Example</strong></p>
-<div id="ca78f5ce" class="cell" data-execution_count="4">
+<div id="adaa5b1f" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> barrel_power_table</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386_project.analysis <span class="im">import</span> barrel_power_table</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>barrel_power_table(df, n<span class="op">=</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
@@ -739,10 +739,10 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <p><strong>Parameters</strong> - <code>df</code> (<code>pd.DataFrame</code>): Cleaned dataset.</p>
 <p><strong>Returns</strong> - <code>pd.DataFrame</code> with columns: - <code>player_name</code> - <code>hr_count</code> - <code>avg_hr_distance</code></p>
 <p><strong>Example</strong></p>
-<div id="a1c7d342" class="cell" data-execution_count="5">
+<div id="58fef5dc" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> workload_vs_distance</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386_project.analysis <span class="im">import</span> workload_vs_distance</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>workload_vs_distance(df).head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
@@ -809,10 +809,10 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <p><strong>Parameters</strong> - <code>df</code> (<code>pd.DataFrame</code>): Cleaned dataset.</p>
 <p><strong>Returns</strong> - <code>pd.DataFrame</code>: Correlation matrix.</p>
 <p><strong>Example</strong></p>
-<div id="fd734514" class="cell" data-execution_count="6">
+<div id="ddef0e14" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> correlation_table</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386_project.analysis <span class="im">import</span> correlation_table</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>correlation_table(df).<span class="bu">round</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
@@ -920,10 +920,10 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <p><strong>Returns</strong> - <code>pd.DataFrame</code>: Subset of hitters flagged as outliers.</p>
 <p><strong>Notes</strong> - Z-scores are computed using population standard deviation (<code>ddof=0</code>). - A hitter is flagged if <strong>any</strong> selected metric exceeds the threshold in absolute value.</p>
 <p><strong>Example</strong></p>
-<div id="7b115838" class="cell" data-execution_count="7">
+<div id="9206c528" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> find_outliers</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386_project.analysis <span class="im">import</span> find_outliers</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>outliers <span class="op">=</span> find_outliers(df)</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>outliers[[<span class="st">"player_name"</span>, <span class="st">"avg_hr_distance"</span>, <span class="st">"avg_hr_distance_z"</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -991,10 +991,10 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <p><strong>Purpose</strong> Visualize the relationship between peak and typical power.</p>
 <p><strong>Returns</strong> - Matplotlib graph</p>
 <p><strong>Example</strong></p>
-<div id="a5f1f01f" class="cell" data-execution_count="8">
+<div id="f431a45a" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> plot_max_vs_avg_distance</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386_project.analysis <span class="im">import</span> plot_max_vs_avg_distance</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plot_max_vs_avg_distance(df)</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1635,7 +1635,7 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a>**Example**</span>
 <span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> load_combined</span>
+<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386_project.analysis <span class="im">import</span> load_combined</span>
 <span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a>df_raw <span class="op">=</span> load_combined()</span>
 <span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a>df_raw.head()</span>
@@ -1669,7 +1669,7 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a>**Example**</span>
 <span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> load_combined, prepare_data</span>
+<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386_project.analysis <span class="im">import</span> load_combined, prepare_data</span>
 <span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> prepare_data(load_combined(), min_hr<span class="op">=</span><span class="dv">5</span>)</span>
 <span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a>df.shape</span>
@@ -1695,7 +1695,7 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a>**Example**</span>
 <span id="cb11-207"><a href="#cb11-207" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb11-208"><a href="#cb11-208" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> longest_vs_avg_distance</span>
+<span id="cb11-208"><a href="#cb11-208" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386_project.analysis <span class="im">import</span> longest_vs_avg_distance</span>
 <span id="cb11-209"><a href="#cb11-209" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-210"><a href="#cb11-210" aria-hidden="true" tabindex="-1"></a>longest_vs_avg_distance(df, n<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb11-211"><a href="#cb11-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -1718,7 +1718,7 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <span id="cb11-228"><a href="#cb11-228" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-229"><a href="#cb11-229" aria-hidden="true" tabindex="-1"></a>**Example**</span>
 <span id="cb11-232"><a href="#cb11-232" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb11-233"><a href="#cb11-233" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> barrel_power_table</span>
+<span id="cb11-233"><a href="#cb11-233" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386_project.analysis <span class="im">import</span> barrel_power_table</span>
 <span id="cb11-234"><a href="#cb11-234" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-235"><a href="#cb11-235" aria-hidden="true" tabindex="-1"></a>barrel_power_table(df, n<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb11-236"><a href="#cb11-236" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -1743,7 +1743,7 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <span id="cb11-255"><a href="#cb11-255" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-256"><a href="#cb11-256" aria-hidden="true" tabindex="-1"></a>**Example**</span>
 <span id="cb11-259"><a href="#cb11-259" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb11-260"><a href="#cb11-260" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> workload_vs_distance</span>
+<span id="cb11-260"><a href="#cb11-260" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386_project.analysis <span class="im">import</span> workload_vs_distance</span>
 <span id="cb11-261"><a href="#cb11-261" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-262"><a href="#cb11-262" aria-hidden="true" tabindex="-1"></a>workload_vs_distance(df).head()</span>
 <span id="cb11-263"><a href="#cb11-263" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -1776,7 +1776,7 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <span id="cb11-290"><a href="#cb11-290" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-291"><a href="#cb11-291" aria-hidden="true" tabindex="-1"></a>**Example**</span>
 <span id="cb11-294"><a href="#cb11-294" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb11-295"><a href="#cb11-295" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> correlation_table</span>
+<span id="cb11-295"><a href="#cb11-295" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386_project.analysis <span class="im">import</span> correlation_table</span>
 <span id="cb11-296"><a href="#cb11-296" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-297"><a href="#cb11-297" aria-hidden="true" tabindex="-1"></a>correlation_table(df).<span class="bu">round</span>(<span class="dv">3</span>)</span>
 <span id="cb11-298"><a href="#cb11-298" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -1804,7 +1804,7 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <span id="cb11-320"><a href="#cb11-320" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-321"><a href="#cb11-321" aria-hidden="true" tabindex="-1"></a>**Example**</span>
 <span id="cb11-324"><a href="#cb11-324" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb11-325"><a href="#cb11-325" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> find_outliers</span>
+<span id="cb11-325"><a href="#cb11-325" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386_project.analysis <span class="im">import</span> find_outliers</span>
 <span id="cb11-326"><a href="#cb11-326" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-327"><a href="#cb11-327" aria-hidden="true" tabindex="-1"></a>outliers <span class="op">=</span> find_outliers(df)</span>
 <span id="cb11-328"><a href="#cb11-328" aria-hidden="true" tabindex="-1"></a>outliers[[<span class="st">"player_name"</span>, <span class="st">"avg_hr_distance"</span>, <span class="st">"avg_hr_distance_z"</span>]].head()</span>
@@ -1830,7 +1830,7 @@ If <code>None</code>, defaults to: - <code>avg_hr_distance</code>, <code>max_hr_
 <span id="cb11-348"><a href="#cb11-348" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-349"><a href="#cb11-349" aria-hidden="true" tabindex="-1"></a>**Example**</span>
 <span id="cb11-352"><a href="#cb11-352" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb11-353"><a href="#cb11-353" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> analysis <span class="im">import</span> plot_max_vs_avg_distance</span>
+<span id="cb11-353"><a href="#cb11-353" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386_project.analysis <span class="im">import</span> plot_max_vs_avg_distance</span>
 <span id="cb11-354"><a href="#cb11-354" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-355"><a href="#cb11-355" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plot_max_vs_avg_distance(df)</span>
 <span id="cb11-356"><a href="#cb11-356" aria-hidden="true" tabindex="-1"></a>fig</span>

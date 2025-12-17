@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from stat_386_project.analysis import (
+from stat386_project.analysis import (
     load_combined,
     prepare_data,
     longest_vs_avg_distance,
