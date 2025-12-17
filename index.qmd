@@ -72,8 +72,10 @@ or by following [this link to the streamlit app](https://cjecma74qyqcmmncdzbtfv.
 ## Navigation
 
 Use:
+
 - **Tutorial** - to see example code and plots
-- **Reference** - for detailed function documentation
+
+- **Documentation** - for detailed function documentation
 
 
 
