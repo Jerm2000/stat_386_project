@@ -13,7 +13,7 @@ website:
       - href: tutorial.qmd
         text: Tutorial
       - href: function_docs.qmd
-        text: Reference
+        text: Documentation
 
 format:
   html:
