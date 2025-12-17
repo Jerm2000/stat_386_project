@@ -10,7 +10,6 @@ execute:
   message: false
 ---
 
-## Who this tutorial is for
 
 This tutorial is written for someone who is looking to download or clone the Github repository and run the Python package locally.
 
@@ -35,7 +34,6 @@ cd <repo>
 
 From the repository root directory:
 
-### macOS / Linux
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate

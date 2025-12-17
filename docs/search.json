@@ -112,13 +112,6 @@
     "text": "This tutorial is written for someone who is looking to download or clone the Github repository and run the Python package locally."
   },
   {
-    "objectID": "tutorial.html#who-this-tutorial-is-for",
-    "href": "tutorial.html#who-this-tutorial-is-for",
-    "title": "Tutorial",
-    "section": "",
-    "text": "This tutorial is written for someone who is looking to download or clone the Github repository and run the Python package locally."
-  },
-  {
     "objectID": "tutorial.html#step-0-download-the-repository",
     "href": "tutorial.html#step-0-download-the-repository",
     "title": "Tutorial",
@@ -130,7 +123,7 @@
     "href": "tutorial.html#step-1-create-a-python-environment-and-install-dependencies",
     "title": "Tutorial",
     "section": "Step 1: Create a Python environment and install dependencies",
-    "text": "Step 1: Create a Python environment and install dependencies\nFrom the repository root directory:\n\nmacOS / Linux\npython3 -m venv .venv\nsource .venv/bin/activate\npython -m pip install --upgrade pip\npip install -r requirements.txt"
+    "text": "Step 1: Create a Python environment and install dependencies\nFrom the repository root directory:\npython3 -m venv .venv\nsource .venv/bin/activate\npython -m pip install --upgrade pip\npip install -r requirements.txt"
   },
   {
     "objectID": "tutorial.html#step-2-confirm-you-have-the-dataset",
