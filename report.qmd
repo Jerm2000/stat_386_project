@@ -151,4 +151,4 @@ Future work could add meaningfully to this analysis in several ways. Examining m
 ## Reproducibility
 
 - Code repository: [GitHub repository](https://github.com/Jerm2000/stat_386_project)
-- Interactive app: [Streamlit app](https://your-streamlit-url)
+- Interactive app: [Streamlit app](https://cjecma74qyqcmmncdzbtfv.streamlit.app)
