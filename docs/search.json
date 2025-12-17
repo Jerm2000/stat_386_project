@@ -105,6 +105,83 @@
     "text": "Navigation\nUse: - Tutorial - to see example code and plots - Reference - for detailed function documentation"
   },
   {
+    "objectID": "tutorial.html",
+    "href": "tutorial.html",
+    "title": "Tutorial",
+    "section": "",
+    "text": "This tutorial is written for someone who is looking to download or clone the Github repository and run the Python package locally."
+  },
+  {
+    "objectID": "tutorial.html#goal-of-this-tutorial",
+    "href": "tutorial.html#goal-of-this-tutorial",
+    "title": "Tutorial",
+    "section": "",
+    "text": "This tutorial walks through a complete, start-to-finish example of using the project’s analysis module (analysis.py) to explore the relationship between maximum and average Statcast power metrics for the 2025 season.\nBy the end, you will know how to:\n\nload the cleaned hitter dataset,\napply the same filtering rules used in the report,\ngenerate summary tables and correlations,\nidentify standout hitters (outliers),\ncreate the main plots used in the report and Streamlit app."
+  },
+  {
+    "objectID": "tutorial.html#setup",
+    "href": "tutorial.html#setup",
+    "title": "Tutorial",
+    "section": "Setup",
+    "text": "Setup\n\nEnvironment (recommended)\nFrom the repository root:\npython -m venv .venv\nsource .venv/bin/activate   # macOS/Linux\n# .venv\\Scripts\\activate    # Windows\n\npip install -r requirements.txt\n\nimport pandas as pd\n\nfrom analysis import (\n    load_combined, prepare_data,\n    longest_vs_avg_distance, barrel_power_table, workload_vs_distance,\n    correlation_table, find_outliers,\n    plot_max_vs_avg_distance, plot_launch_speed_vs_distance,\n    plot_barrel_percent_vs_distance, plot_hr_count_vs_distance\n)"
+  },
+  {
+    "objectID": "tutorial.html#step-1-load-and-prepare-the-dataset",
+    "href": "tutorial.html#step-1-load-and-prepare-the-dataset",
+    "title": "Tutorial",
+    "section": "Step 1: Load and prepare the dataset",
+    "text": "Step 1: Load and prepare the dataset\nWe begin by loading the combined dataset and applying the same filtering rules used throughout the project: - exclude hitters with fewer than 5 home runs - drop rows missing key distance/exit velocity/barrel metrics\n\ndf_raw = load_combined()\ndf = prepare_data(df_raw, min_hr=5)\n\ndf_raw.shape, df.shape\n\n((240, 9), (240, 9))\n\n\nA quick look at the columns:\n\ndf.columns\n\nIndex(['player_name', 'batter', 'hr_count', 'avg_hr_distance',\n       'max_hr_distance', 'avg_launch_speed', 'max_launch_speed', 'barrels',\n       'brl_percent'],\n      dtype='object')"
+  },
+  {
+    "objectID": "tutorial.html#step-2-peak-vs-typical-power-table-plot",
+    "href": "tutorial.html#step-2-peak-vs-typical-power-table-plot",
+    "title": "Tutorial",
+    "section": "Step 2: Peak vs typical power (table + plot)",
+    "text": "Step 2: Peak vs typical power (table + plot)\nA core question of this project is whether hitters with extreme maximum values also tend to have strong average values. One way to explore this is to rank hitters by their longest home run and then compare their average distance and exit velocity context.\n\n2.1 Table: leaders by maximum home run distance\n\n\n\n\n\n\nTop hitters by maximum home run distance (min 5 HR), with average distance and exit velocity context.\n\n\n\nplayer_name\nhr_count\navg_hr_distance\nmax_hr_distance\navg_launch_speed\nmax_launch_speed\n\n\n\n\n60\nKurtz, Nick\n37\n403.6\n493\n105.7\n114.6\n\n\n30\nTrout, Mike\n27\n407.6\n485\n107.1\n115.4\n\n\n35\nBuxton, Byron\n37\n406.9\n479\n106.4\n113.7\n\n\n42\nCarroll, Corbin\n31\n405.4\n474\n105.6\n111.8\n\n\n85\nGreene, Riley\n38\n399.2\n471\n107.6\n114.3\n\n\n68\nO'Hoppe, Logan\n19\n401.7\n470\n104.9\n109.6\n\n\n34\nJudge, Aaron\n55\n407.1\n469\n108.0\n117.9\n\n\n31\nOhtani, Shohei\n62\n407.5\n469\n109.5\n120.0\n\n\n0\nAcuña Jr., Ronald\n21\n418.5\n468\n109.2\n115.5\n\n\n18\nSchwarber, Kyle\n59\n409.8\n468\n107.8\n117.2\n\n\n120\nAranda, Jonathan\n15\n394.9\n467\n105.1\n111.1\n\n\n10\nMcMahon, Ryan\n21\n412.1\n467\n106.1\n112.0\n\n\n61\nSuárez, Eugenio\n53\n403.2\n466\n104.7\n113.8\n\n\n110\nBusch, Michael\n38\n396.2\n466\n105.1\n111.9\n\n\n116\nYelich, Christian\n29\n395.2\n465\n105.1\n112.4\n\n\n14\nOzuna, Marcell\n23\n411.2\n464\n105.6\n112.1\n\n\n19\nCruz, Oneil\n20\n409.7\n463\n110.2\n122.9\n\n\n103\nWestburg, Jordan\n17\n396.8\n461\n104.0\n110.0\n\n\n59\nOlson, Matt\n30\n403.6\n459\n106.8\n113.4\n\n\n49\nCorrea, Carlos\n13\n404.6\n458\n105.5\n110.0\n\n\n\n\n\n\n\nHow to read this table: - max_hr_distance highlights the “headline” home run - avg_hr_distance gives the more typical distance across the season - exit velocity columns help contextualize whether a long HR matches consistently hard contact\n\n\n2.2 Plot: maximum vs average home run distance\n\n\n\n\n\nMaximum vs. average home run distance for 2025 hitters (min 5 HR).\n\n\n\n\n\n\n\n\n\n\n\nWhat to look for: - An upward trend suggests hitters with longer “best” HRs also tend to have longer average HR distance. - Points far from the trend line can represent “one-off” peaks or unusual hitter profiles."
+  },
+  {
+    "objectID": "tutorial.html#step-3-contact-quality-barrels-and-power",
+    "href": "tutorial.html#step-3-contact-quality-barrels-and-power",
+    "title": "Tutorial",
+    "section": "Step 3: Contact quality (barrels) and power",
+    "text": "Step 3: Contact quality (barrels) and power\nBarrel percentage is a common Statcast indicator of consistently strong contact. In this step, we examine how barrel rate relates to distance metrics.\n\n3.1 Table: leaders by barrel percentage\n\n\n\n\n\n\nTop hitters by barrel percentage (min 5 HR), with distance and exit velocity context.\n\n\n\nplayer_name\nhr_count\navg_hr_distance\nmax_hr_distance\navg_launch_speed\nbarrels\nbrl_percent\n\n\n\n\n34\nJudge, Aaron\n55\n407.1\n469\n108.0\n96\n24.7\n\n\n31\nOhtani, Shohei\n62\n407.5\n469\n109.5\n100\n23.5\n\n\n18\nSchwarber, Kyle\n59\n409.8\n468\n107.8\n85\n20.8\n\n\n155\nRaleigh, Cal\n67\n390.6\n448\n105.6\n80\n19.5\n\n\n118\nStowers, Kyle\n25\n395.1\n440\n104.6\n53\n19.0\n\n\n32\nAlonso, Pete\n39\n407.3\n447\n107.6\n89\n18.9\n\n\n60\nKurtz, Nick\n37\n403.6\n493\n105.7\n50\n18.4\n\n\n78\nSoto, Juan\n43\n400.3\n437\n106.9\n81\n18.1\n\n\n19\nCruz, Oneil\n20\n409.7\n463\n110.2\n54\n17.9\n\n\n35\nBuxton, Byron\n37\n406.9\n479\n106.4\n61\n17.6\n\n\n17\nAdell, Jo\n38\n410.7\n454\n108.4\n65\n17.3\n\n\n85\nGreene, Riley\n38\n399.2\n471\n107.6\n69\n17.1\n\n\n110\nBusch, Michael\n38\n396.2\n466\n105.1\n66\n17.1\n\n\n81\nSuzuki, Seiya\n37\n399.7\n445\n106.1\n69\n16.6\n\n\n11\nWood, James\n31\n411.5\n451\n109.4\n62\n16.3\n\n\n53\nSpringer, George\n37\n404.3\n450\n106.0\n63\n16.1\n\n\n73\nDevers, Rafael\n35\n401.1\n442\n106.5\n67\n16.0\n\n\n30\nTrout, Mike\n27\n407.6\n485\n107.1\n45\n15.8\n\n\n0\nAcuña Jr., Ronald\n21\n418.5\n468\n109.2\n37\n15.7\n\n\n86\nRice, Ben\n27\n399.1\n435\n106.7\n57\n15.4\n\n\n\n\n\n\n\n\n\n3.2 Plot: barrel percentage vs average home run distance\n\n\n\n\n\nBarrel percentage vs. average home run distance (min 5 HR).\n\n\n\n\n\n\n\n\n\n\n\nInterpretation idea: - If barrel percentage aligns strongly with average HR distance, that suggests barrel rate captures a consistent power skill rather than isolated peaks."
+  },
+  {
+    "objectID": "tutorial.html#step-4-exit-velocity-and-average-home-run-distance",
+    "href": "tutorial.html#step-4-exit-velocity-and-average-home-run-distance",
+    "title": "Tutorial",
+    "section": "Step 4: Exit velocity and average home run distance",
+    "text": "Step 4: Exit velocity and average home run distance\nExit velocity is another measure of contact quality. Here we compare average exit velocity to average home run distance.\n\n\n\n\n\nAverage exit velocity vs. average home run distance (min 5 HR).\n\n\n\n\n\n\n\n\n\n\n\nWhat to look for: - A clear positive relationship would support the idea that hitters who consistently hit the ball hard also tend to hit longer home runs on average."
+  },
+  {
+    "objectID": "tutorial.html#step-5-workload-vs-typical-power",
+    "href": "tutorial.html#step-5-workload-vs-typical-power",
+    "title": "Tutorial",
+    "section": "Step 5: Workload vs typical power",
+    "text": "Step 5: Workload vs typical power\nSome hitters hit many home runs, but does that imply they hit them far on average? This step compares home run count to average HR distance.\n\n5.1 Table: workload vs average distance\n\n\n\n\n\n\nHome run count vs. average home run distance (min 5 HR).\n\n\n\nplayer_name\nhr_count\navg_hr_distance\n\n\n\n\n155\nRaleigh, Cal\n67\n390.6\n\n\n31\nOhtani, Shohei\n62\n407.5\n\n\n18\nSchwarber, Kyle\n59\n409.8\n\n\n34\nJudge, Aaron\n55\n407.1\n\n\n61\nSuárez, Eugenio\n53\n403.2\n\n\n143\nCaminero, Junior\n46\n392.1\n\n\n78\nSoto, Juan\n43\n400.3\n\n\n32\nAlonso, Pete\n39\n407.3\n\n\n85\nGreene, Riley\n38\n399.2\n\n\n17\nAdell, Jo\n38\n410.7\n\n\n110\nBusch, Michael\n38\n396.2\n\n\n52\nRodríguez, Julio\n38\n404.3\n\n\n102\nWard, Taylor\n38\n396.8\n\n\n81\nSuzuki, Seiya\n37\n399.7\n\n\n35\nBuxton, Byron\n37\n406.9\n\n\n60\nKurtz, Nick\n37\n403.6\n\n\n53\nSpringer, George\n37\n404.3\n\n\n73\nDevers, Rafael\n35\n401.1\n\n\n171\nGrisham, Trent\n34\n388.5\n\n\n41\nGoodman, Hunter\n34\n405.5\n\n\n\n\n\n\n\n\n\n5.2 Plot: home run count vs average distance\n\n\n\n\n\nHome run count vs. average home run distance (min 5 HR).\n\n\n\n\n\n\n\n\n\n\n\nInterpretation idea: - A weak relationship here would suggest that volume of home runs and “how far they go” capture different aspects of performance."
+  },
+  {
+    "objectID": "tutorial.html#step-6-correlation-matrix-high-level-relationships",
+    "href": "tutorial.html#step-6-correlation-matrix-high-level-relationships",
+    "title": "Tutorial",
+    "section": "Step 6: Correlation matrix (high-level relationships)",
+    "text": "Step 6: Correlation matrix (high-level relationships)\nA correlation matrix summarizes how the key metrics move together across hitters.\n\n\n\n\n\n\nPearson correlation matrix across key power metrics (min 5 HR).\n\n\n\navg_hr_distance\nmax_hr_distance\navg_launch_speed\nmax_launch_speed\nbarrels\nbrl_percent\nhr_count\n\n\n\n\navg_hr_distance\n1.000\n0.695\n0.803\n0.607\n0.502\n0.572\n0.318\n\n\nmax_hr_distance\n0.695\n1.000\n0.690\n0.697\n0.648\n0.703\n0.582\n\n\navg_launch_speed\n0.803\n0.690\n1.000\n0.852\n0.673\n0.760\n0.472\n\n\nmax_launch_speed\n0.607\n0.697\n0.852\n1.000\n0.726\n0.782\n0.597\n\n\nbarrels\n0.502\n0.648\n0.673\n0.726\n1.000\n0.889\n0.889\n\n\nbrl_percent\n0.572\n0.703\n0.760\n0.782\n0.889\n1.000\n0.772\n\n\nhr_count\n0.318\n0.582\n0.472\n0.597\n0.889\n0.772\n1.000\n\n\n\n\n\n\n\nHow to use this: - Large positive correlations indicate metrics that capture similar player profiles. - Smaller correlations indicate metrics that provide different information (useful if your goal is a broader view of power)."
+  },
+  {
+    "objectID": "tutorial.html#step-7-identifying-standout-hitters-outliers",
+    "href": "tutorial.html#step-7-identifying-standout-hitters-outliers",
+    "title": "Tutorial",
+    "section": "Step 7: Identifying standout hitters (outliers)",
+    "text": "Step 7: Identifying standout hitters (outliers)\nBecause this project is partly about extreme performances, we flag hitters whose values are unusually high or low on selected metrics using z-scores.\n\n\n\n\n\n\nHitters flagged as outliers using |z| &gt; 2.5 on selected metrics.\n\n\n\nplayer_name\nhr_count\navg_hr_distance\navg_hr_distance_z\nmax_hr_distance\nmax_hr_distance_z\navg_launch_speed\navg_launch_speed_z\n\n\n\n\n19\nCruz, Oneil\n20\n409.7\n1.406094\n463\n1.575329\n110.2\n2.726605\n\n\n30\nTrout, Mike\n27\n407.6\n1.204904\n485\n2.771782\n107.1\n1.315900\n\n\n60\nKurtz, Nick\n37\n403.6\n0.821685\n493\n3.206855\n105.7\n0.678807\n\n\n232\nMcKinstry, Zach\n13\n375.5\n-1.870428\n386\n-2.612255\n101.1\n-1.414497\n\n\n237\nArraez, Luis\n8\n369.7\n-2.426095\n402\n-1.742107\n98.0\n-2.825202\n\n\n238\nCaballero, José\n5\n368.8\n-2.512319\n423\n-0.600039\n101.8\n-1.095951\n\n\n239\nFrazier, Adam\n7\n365.6\n-2.818895\n393\n-2.231565\n97.7\n-2.961722\n\n\n\n\n\n\n\nInterpretation idea: - These hitters are not “bad data.” They are flagged because their performance profile is unusually extreme compared to the rest of the dataset. - In the report, these players are useful examples when discussing whether peaks are supported by strong averages."
+  },
+  {
+    "objectID": "tutorial.html#where-to-go-next",
+    "href": "tutorial.html#where-to-go-next",
+    "title": "Tutorial",
+    "section": "Where to go next",
+    "text": "Where to go next\n\nFor a full summary of what each function does (inputs/outputs), see the Documentation page.\nFor interactive exploration (filters, dynamic tables/plots), use the Streamlit app, which uses these same functions under the hood.\nFor project conclusions and interpretation, see the Final Report page."
+  },
+  {
     "objectID": "report.html",
     "href": "report.html",
     "title": "Final Project Report",
@@ -152,5 +229,82 @@
     "title": "Final Project Report",
     "section": "Reproducibility",
     "text": "Reproducibility\n\nCode repository: GitHub repository\nInteractive app: Streamlit app"
+  },
+  {
+    "objectID": "tutorial.html#who-this-tutorial-is-for",
+    "href": "tutorial.html#who-this-tutorial-is-for",
+    "title": "Tutorial",
+    "section": "",
+    "text": "This tutorial is written for someone who is looking to download or clone the Github repository and run the Python package locally."
+  },
+  {
+    "objectID": "tutorial.html#step-0-download-the-repository",
+    "href": "tutorial.html#step-0-download-the-repository",
+    "title": "Tutorial",
+    "section": "Step 0: Download the repository",
+    "text": "Step 0: Download the repository\n\nOption A: Download ZIP\n\nOpen the GitHub repository page.\nClick Code → Download ZIP.\nUnzip the folder somewhere on your computer.\n\n\n\nOption B: Clone with Git\ngit clone https://github.com/&lt;username&gt;/&lt;repo&gt;.git\ncd &lt;repo&gt;"
+  },
+  {
+    "objectID": "tutorial.html#step-1-create-a-python-environment-and-install-dependencies",
+    "href": "tutorial.html#step-1-create-a-python-environment-and-install-dependencies",
+    "title": "Tutorial",
+    "section": "Step 1: Create a Python environment and install dependencies",
+    "text": "Step 1: Create a Python environment and install dependencies\nFrom the repository root directory:\n\nmacOS / Linux\npython3 -m venv .venv\nsource .venv/bin/activate\npython -m pip install --upgrade pip\npip install -r requirements.txt"
+  },
+  {
+    "objectID": "tutorial.html#step-2-confirm-you-have-the-dataset",
+    "href": "tutorial.html#step-2-confirm-you-have-the-dataset",
+    "title": "Tutorial",
+    "section": "Step 2: Confirm you have the dataset",
+    "text": "Step 2: Confirm you have the dataset\nThe analysis assumes the combined dataset already exists at:\n\ndata/combined_leaders_2025.csv\n\nIf that file is present, you can skip to Step 3.\n\nRebuild the dataset (only if needed)\nIf the combined CSV is missing or you want to regenerate it, run:\npython fetch_data.py\nThis will:\n\nquery Statcast using pybaseball\nfilter to home runs\ncompute hitter-level summary statistics\nmerge in barrel metrics from data/exit_velocity.csv\ncreate data/combined_leaders_2025.csv"
+  },
+  {
+    "objectID": "tutorial.html#step-3-load-and-prepare-the-data-in-python",
+    "href": "tutorial.html#step-3-load-and-prepare-the-data-in-python",
+    "title": "Tutorial",
+    "section": "Step 3: Load and prepare the data in Python",
+    "text": "Step 3: Load and prepare the data in Python\nCreate a new file in the repo root called tutorial_run.py (or open a Python notebook) and start with the following.\n\nfrom analysis import load_combined, prepare_data\n\ndf_raw = load_combined()\ndf = prepare_data(df_raw, min_hr=5)\n\ndf_raw.shape, df.shape\n\n((240, 9), (240, 9))\n\n\nWhat this does\n\nload_combined() reads data/combined_leaders_2025.csv\nprepare_data() applies the same filtering rules used in the project:\n\nkeep hitters with at least 5 home runs\nremove rows missing key metrics needed for plots/tables"
+  },
+  {
+    "objectID": "tutorial.html#step-4-generate-the-main-summary-tables",
+    "href": "tutorial.html#step-4-generate-the-main-summary-tables",
+    "title": "Tutorial",
+    "section": "Step 4: Generate the main summary tables",
+    "text": "Step 4: Generate the main summary tables\nThese tables mirror the comparisons used in the final report.\n\n4.1 Longest HR vs average HR distance\n\nfrom analysis import longest_vs_avg_distance\n\nlongest_vs_avg_distance(df, n=10)\n\n\n\n\n\n\n\n\nplayer_name\nhr_count\navg_hr_distance\nmax_hr_distance\navg_launch_speed\nmax_launch_speed\n\n\n\n\n60\nKurtz, Nick\n37\n403.6\n493\n105.7\n114.6\n\n\n30\nTrout, Mike\n27\n407.6\n485\n107.1\n115.4\n\n\n35\nBuxton, Byron\n37\n406.9\n479\n106.4\n113.7\n\n\n42\nCarroll, Corbin\n31\n405.4\n474\n105.6\n111.8\n\n\n85\nGreene, Riley\n38\n399.2\n471\n107.6\n114.3\n\n\n68\nO'Hoppe, Logan\n19\n401.7\n470\n104.9\n109.6\n\n\n34\nJudge, Aaron\n55\n407.1\n469\n108.0\n117.9\n\n\n31\nOhtani, Shohei\n62\n407.5\n469\n109.5\n120.0\n\n\n0\nAcuña Jr., Ronald\n21\n418.5\n468\n109.2\n115.5\n\n\n18\nSchwarber, Kyle\n59\n409.8\n468\n107.8\n117.2\n\n\n\n\n\n\n\nHow to interpret - Players are ranked by max_hr_distance - avg_hr_distance shows whether their typical home run distance is also high - exit velocity columns provide context for how consistently hard the player hits the ball\n\n\n\n4.2 Barrel percentage leaders (quality of contact)\n\nfrom analysis import barrel_power_table\n\nbarrel_power_table(df, n=10)\n\n\n\n\n\n\n\n\nplayer_name\nhr_count\navg_hr_distance\nmax_hr_distance\navg_launch_speed\nbarrels\nbrl_percent\n\n\n\n\n34\nJudge, Aaron\n55\n407.1\n469\n108.0\n96\n24.7\n\n\n31\nOhtani, Shohei\n62\n407.5\n469\n109.5\n100\n23.5\n\n\n18\nSchwarber, Kyle\n59\n409.8\n468\n107.8\n85\n20.8\n\n\n155\nRaleigh, Cal\n67\n390.6\n448\n105.6\n80\n19.5\n\n\n118\nStowers, Kyle\n25\n395.1\n440\n104.6\n53\n19.0\n\n\n32\nAlonso, Pete\n39\n407.3\n447\n107.6\n89\n18.9\n\n\n60\nKurtz, Nick\n37\n403.6\n493\n105.7\n50\n18.4\n\n\n78\nSoto, Juan\n43\n400.3\n437\n106.9\n81\n18.1\n\n\n19\nCruz, Oneil\n20\n409.7\n463\n110.2\n54\n17.9\n\n\n35\nBuxton, Byron\n37\n406.9\n479\n106.4\n61\n17.6\n\n\n\n\n\n\n\nHow to interpret - brl_percent (barrel percentage) is a measure of high-quality contact - the other columns provide context about distance and exit velocity\n\n\n\n4.3 Workload vs average distance\n\nfrom analysis import workload_vs_distance\n\nworkload_vs_distance(df).sort_values(\"hr_count\", ascending=False).head(10)\n\n\n\n\n\n\n\n\nplayer_name\nhr_count\navg_hr_distance\n\n\n\n\n155\nRaleigh, Cal\n67\n390.6\n\n\n31\nOhtani, Shohei\n62\n407.5\n\n\n18\nSchwarber, Kyle\n59\n409.8\n\n\n34\nJudge, Aaron\n55\n407.1\n\n\n61\nSuárez, Eugenio\n53\n403.2\n\n\n143\nCaminero, Junior\n46\n392.1\n\n\n78\nSoto, Juan\n43\n400.3\n\n\n32\nAlonso, Pete\n39\n407.3\n\n\n85\nGreene, Riley\n38\n399.2\n\n\n17\nAdell, Jo\n38\n410.7\n\n\n\n\n\n\n\nHow to interpret - shows whether hitters with many home runs also tend to hit longer home runs on average"
+  },
+  {
+    "objectID": "tutorial.html#step-5-correlations-among-key-metrics",
+    "href": "tutorial.html#step-5-correlations-among-key-metrics",
+    "title": "Tutorial",
+    "section": "Step 5: Correlations among key metrics",
+    "text": "Step 5: Correlations among key metrics\nTo get a high-level summary of how the metrics relate:\n\nfrom analysis import correlation_table\n\ncorrelation_table(df).round(3)\n\n\n\n\n\n\n\n\navg_hr_distance\nmax_hr_distance\navg_launch_speed\nmax_launch_speed\nbarrels\nbrl_percent\nhr_count\n\n\n\n\navg_hr_distance\n1.000\n0.695\n0.803\n0.607\n0.502\n0.572\n0.318\n\n\nmax_hr_distance\n0.695\n1.000\n0.690\n0.697\n0.648\n0.703\n0.582\n\n\navg_launch_speed\n0.803\n0.690\n1.000\n0.852\n0.673\n0.760\n0.472\n\n\nmax_launch_speed\n0.607\n0.697\n0.852\n1.000\n0.726\n0.782\n0.597\n\n\nbarrels\n0.502\n0.648\n0.673\n0.726\n1.000\n0.889\n0.889\n\n\nbrl_percent\n0.572\n0.703\n0.760\n0.782\n0.889\n1.000\n0.772\n\n\nhr_count\n0.318\n0.582\n0.472\n0.597\n0.889\n0.772\n1.000\n\n\n\n\n\n\n\nHow to interpret - larger positive values indicate metrics that tend to be high for the same hitters - smaller values indicate metrics that capture different aspects of power/performance"
+  },
+  {
+    "objectID": "tutorial.html#step-6-identify-standout-hitters-outliers",
+    "href": "tutorial.html#step-6-identify-standout-hitters-outliers",
+    "title": "Tutorial",
+    "section": "Step 6: Identify standout hitters (outliers)",
+    "text": "Step 6: Identify standout hitters (outliers)\nOutliers are flagged using z-scores. A hitter is flagged if they are unusually extreme on any selected metric.\n\nfrom analysis import find_outliers\n\noutliers = find_outliers(\n    df,\n    columns=(\"avg_hr_distance\", \"max_hr_distance\", \"avg_launch_speed\"),\n    z_thresh=2.5,\n)\n\noutliers[[\n    \"player_name\",\n    \"hr_count\",\n    \"avg_hr_distance\", \"avg_hr_distance_z\",\n    \"max_hr_distance\", \"max_hr_distance_z\",\n    \"avg_launch_speed\", \"avg_launch_speed_z\",\n]].head(25)\n\n\n\n\n\n\n\n\nplayer_name\nhr_count\navg_hr_distance\navg_hr_distance_z\nmax_hr_distance\nmax_hr_distance_z\navg_launch_speed\navg_launch_speed_z\n\n\n\n\n19\nCruz, Oneil\n20\n409.7\n1.406094\n463\n1.575329\n110.2\n2.726605\n\n\n30\nTrout, Mike\n27\n407.6\n1.204904\n485\n2.771782\n107.1\n1.315900\n\n\n60\nKurtz, Nick\n37\n403.6\n0.821685\n493\n3.206855\n105.7\n0.678807\n\n\n232\nMcKinstry, Zach\n13\n375.5\n-1.870428\n386\n-2.612255\n101.1\n-1.414497\n\n\n237\nArraez, Luis\n8\n369.7\n-2.426095\n402\n-1.742107\n98.0\n-2.825202\n\n\n238\nCaballero, José\n5\n368.8\n-2.512319\n423\n-0.600039\n101.8\n-1.095951\n\n\n239\nFrazier, Adam\n7\n365.6\n-2.818895\n393\n-2.231565\n97.7\n-2.961722\n\n\n\n\n\n\n\nWhy this matters - This project is partly about whether “headline” max metrics reflect consistent skill - outliers provide concrete examples to discuss in the report (not data errors)"
+  },
+  {
+    "objectID": "tutorial.html#step-7-create-the-plots-used-in-the-report",
+    "href": "tutorial.html#step-7-create-the-plots-used-in-the-report",
+    "title": "Tutorial",
+    "section": "Step 7: Create the plots used in the report",
+    "text": "Step 7: Create the plots used in the report\nThe plotting functions return Matplotlib Figure objects. In a notebook or Quarto, they will display automatically when they are the last line. In a plain Python script, you should call plt.show() after creating the figure.\n\n7.1 Max vs average home run distance\n\nfrom analysis import plot_max_vs_avg_distance\nimport matplotlib.pyplot as plt\n\nfig = plot_max_vs_avg_distance(df)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n7.2 Exit velocity vs average home run distance\n\nfrom analysis import plot_launch_speed_vs_distance\nimport matplotlib.pyplot as plt\n\nfig = plot_launch_speed_vs_distance(df)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n7.3 Barrel percentage vs average home run distance\n\nfrom analysis import plot_barrel_percent_vs_distance\nimport matplotlib.pyplot as plt\n\nfig = plot_barrel_percent_vs_distance(df)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n7.4 Home run count vs average home run distance\n\nfrom analysis import plot_hr_count_vs_distance\nimport matplotlib.pyplot as plt\n\nfig = plot_hr_count_vs_distance(df)\nplt.show()"
+  },
+  {
+    "objectID": "tutorial.html#step-8-optional-run-the-streamlit-app-locally",
+    "href": "tutorial.html#step-8-optional-run-the-streamlit-app-locally",
+    "title": "Tutorial",
+    "section": "Step 8: (Optional) Run the Streamlit app locally",
+    "text": "Step 8: (Optional) Run the Streamlit app locally\nIf you want to explore the same analysis interactively, you can run:\nstreamlit run streamlit_proj.py\nThis launches a local URL where you can filter hitters and view the plots dynamically."
+  },
+  {
+    "objectID": "tutorial.html#summary",
+    "href": "tutorial.html#summary",
+    "title": "Tutorial",
+    "section": "Summary",
+    "text": "Summary\nIf you downloaded the repository, the workflow is:\n\nInstall dependencies (pip install -r requirements.txt)\nLoad and clean the dataset (load_combined() → prepare_data())\nRun summary tables, correlations, outliers, and plots\nLaunch the Streamlit app for interactive exploration\n\nFor detailed function reference (inputs/outputs), see the Documentation page."
   }
 ]

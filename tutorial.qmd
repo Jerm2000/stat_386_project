@@ -1,0 +1,255 @@
+---
+title: "Tutorial"
+format:
+  html:
+    toc: true
+    code-fold: false
+    code-tools: true
+execute:
+  warning: false
+  message: false
+---
+
+## Who this tutorial is for
+
+This tutorial is written for someone who is looking to download or clone the Github repository and run the Python package locally.
+
+---
+
+## Step 0: Download the repository
+
+### Option A: Download ZIP 
+1. Open the GitHub repository page.
+2. Click **Code → Download ZIP**.
+3. Unzip the folder somewhere on your computer.
+
+### Option B: Clone with Git 
+```bash
+git clone https://github.com/<username>/<repo>.git
+cd <repo>
+```
+
+---
+
+## Step 1: Create a Python environment and install dependencies
+
+From the repository root directory:
+
+### macOS / Linux
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+---
+
+## Step 2: Confirm you have the dataset
+
+The analysis assumes the combined dataset already exists at:
+
+- `data/combined_leaders_2025.csv`
+
+If that file is present, you can skip to Step 3.
+
+### Rebuild the dataset (only if needed)
+
+If the combined CSV is missing or you want to regenerate it, run:
+
+```bash
+python fetch_data.py
+```
+
+This will:
+
+- query Statcast using `pybaseball`
+- filter to home runs
+- compute hitter-level summary statistics
+- merge in barrel metrics from `data/exit_velocity.csv`
+- create `data/combined_leaders_2025.csv`
+
+
+---
+
+## Step 3: Load and prepare the data in Python
+
+Create a new file in the repo root called `tutorial_run.py` (or open a Python notebook) and start with the following.
+
+```{python}
+from analysis import load_combined, prepare_data
+
+df_raw = load_combined()
+df = prepare_data(df_raw, min_hr=5)
+
+df_raw.shape, df.shape
+```
+
+**What this does**
+
+- `load_combined()` reads `data/combined_leaders_2025.csv`
+- `prepare_data()` applies the same filtering rules used in the project:
+
+  - keep hitters with at least 5 home runs
+  - remove rows missing key metrics needed for plots/tables
+
+---
+
+## Step 4: Generate the main summary tables
+
+These tables mirror the comparisons used in the final report.
+
+### 4.1 Longest HR vs average HR distance
+
+```{python}
+from analysis import longest_vs_avg_distance
+
+longest_vs_avg_distance(df, n=10)
+```
+
+**How to interpret**
+- Players are ranked by `max_hr_distance`
+- `avg_hr_distance` shows whether their typical home run distance is also high
+- exit velocity columns provide context for how consistently hard the player hits the ball
+
+---
+
+### 4.2 Barrel percentage leaders (quality of contact)
+
+```{python}
+from analysis import barrel_power_table
+
+barrel_power_table(df, n=10)
+```
+
+**How to interpret**
+- `brl_percent` (barrel percentage) is a measure of high-quality contact
+- the other columns provide context about distance and exit velocity
+
+---
+
+### 4.3 Workload vs average distance
+
+```{python}
+from analysis import workload_vs_distance
+
+workload_vs_distance(df).sort_values("hr_count", ascending=False).head(10)
+```
+
+**How to interpret**
+- shows whether hitters with many home runs also tend to hit longer home runs on average
+
+---
+
+## Step 5: Correlations among key metrics
+
+To get a high-level summary of how the metrics relate:
+
+```{python}
+from analysis import correlation_table
+
+correlation_table(df).round(3)
+```
+
+**How to interpret**
+- larger positive values indicate metrics that tend to be high for the same hitters
+- smaller values indicate metrics that capture different aspects of power/performance
+
+---
+
+## Step 6: Identify standout hitters (outliers)
+
+Outliers are flagged using z-scores. A hitter is flagged if they are unusually extreme on **any** selected metric.
+
+```{python}
+from analysis import find_outliers
+
+outliers = find_outliers(
+    df,
+    columns=("avg_hr_distance", "max_hr_distance", "avg_launch_speed"),
+    z_thresh=2.5,
+)
+
+outliers[[
+    "player_name",
+    "hr_count",
+    "avg_hr_distance", "avg_hr_distance_z",
+    "max_hr_distance", "max_hr_distance_z",
+    "avg_launch_speed", "avg_launch_speed_z",
+]].head(25)
+```
+
+**Why this matters**
+- This project is partly about whether “headline” max metrics reflect consistent skill
+- outliers provide concrete examples to discuss in the report (not data errors)
+
+---
+
+## Step 7: Create the plots used in the report
+
+The plotting functions return Matplotlib `Figure` objects. In a notebook or Quarto, they will display automatically when they are the last line. In a plain Python script, you should call `plt.show()` after creating the figure.
+
+### 7.1 Max vs average home run distance
+
+```{python}
+from analysis import plot_max_vs_avg_distance
+import matplotlib.pyplot as plt
+
+fig = plot_max_vs_avg_distance(df)
+plt.show()
+```
+
+### 7.2 Exit velocity vs average home run distance
+
+```{python}
+from analysis import plot_launch_speed_vs_distance
+import matplotlib.pyplot as plt
+
+fig = plot_launch_speed_vs_distance(df)
+plt.show()
+```
+
+### 7.3 Barrel percentage vs average home run distance
+
+```{python}
+from analysis import plot_barrel_percent_vs_distance
+import matplotlib.pyplot as plt
+
+fig = plot_barrel_percent_vs_distance(df)
+plt.show()
+```
+
+### 7.4 Home run count vs average home run distance
+
+```{python}
+from analysis import plot_hr_count_vs_distance
+import matplotlib.pyplot as plt
+
+fig = plot_hr_count_vs_distance(df)
+plt.show()
+```
+
+---
+
+## Step 8: (Optional) Run the Streamlit app locally
+
+If you want to explore the same analysis interactively, you can run:
+
+```bash
+streamlit run streamlit_proj.py
+```
+
+This launches a local URL where you can filter hitters and view the plots dynamically.
+
+---
+
+## Summary
+
+If you downloaded the repository, the workflow is:
+
+1. Install dependencies (`pip install -r requirements.txt`)
+2. Load and clean the dataset (`load_combined()` → `prepare_data()`)
+3. Run summary tables, correlations, outliers, and plots
+4. Launch the Streamlit app for interactive exploration
+
+For detailed function reference (inputs/outputs), see the **Documentation** page.
