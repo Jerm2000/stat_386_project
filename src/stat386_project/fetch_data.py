@@ -1,8 +1,12 @@
 from pybaseball import statcast
 import pandas as pd
+from pathlib import Path
 
 
 def main():
+
+    Path("data").mkdir(parents=True, exist_ok=True)
+    
     BARREL_CSV_URL = (
         "https://raw.githubusercontent.com/Jerm2000/stat_386_project/main/data/exit_velocity.csv"
     )
