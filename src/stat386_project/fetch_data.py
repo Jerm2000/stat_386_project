@@ -1,12 +1,14 @@
 from pybaseball import statcast
 import pandas as pd
 from pathlib import Path
+import io
+import requests
 
 
 def main():
 
     Path("data").mkdir(parents=True, exist_ok=True)
-    
+
     BARREL_CSV_URL = (
         "https://raw.githubusercontent.com/Jerm2000/stat_386_project/main/data/exit_velocity.csv"
     )
@@ -50,7 +52,9 @@ def main():
     try:
         barrel_leaders = pd.read_csv("./data/exit_velocity.csv")
     except FileNotFoundError:
-        barrel_leaders = pd.read_csv(BARREL_CSV_URL)
+        r = requests.get(BARREL_CSV_URL, timeout=30)
+        r.raise_for_status()
+        barrel_leaders = pd.read_csv(io.StringIO(r.text))
 
 
     #Combining last name and first name into one column so both datasets match
