@@ -25,7 +25,7 @@ The tutorial assumes:
 Install the package from PyPI:
 
 ```bash
-pip install jerm2000-stat-386-project
+pip3 install jerm2000-stat-386-project
 ```
 
 ---
@@ -39,7 +39,7 @@ The analysis uses a combined hitter-level dataset saved as:
 To generate the dataset using the installed package, run the following command in your terminal:
 
 ```bash
-python -m stat386_project.fetch_data
+python3 -m stat386_project.fetch_data
 ```
 
 This will:

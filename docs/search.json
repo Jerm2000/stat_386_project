@@ -116,14 +116,14 @@
     "href": "tutorial.html#step-0-install-the-package",
     "title": "Tutorial",
     "section": "Step 0: Install the package",
-    "text": "Step 0: Install the package\nInstall the package from PyPI:\npip install jerm2000-stat-386-project"
+    "text": "Step 0: Install the package\nInstall the package from PyPI:\npip3 install jerm2000-stat-386-project"
   },
   {
     "objectID": "tutorial.html#step-1-generate-the-dataset",
     "href": "tutorial.html#step-1-generate-the-dataset",
     "title": "Tutorial",
     "section": "Step 1: Generate the dataset",
-    "text": "Step 1: Generate the dataset\nThe analysis uses a combined hitter-level dataset saved as:\n\ndata/combined_leaders_2025.csv\n\nTo generate the dataset using the installed package, run the following command in your terminal:\npython -m stat386_project.fetch_data\nThis will:\n\nquery Statcast using pybaseball\nfilter to home runs\ncompute hitter-level summary statistics\nmerge in barrel metrics (downloaded automatically if not available locally)\ncreate:\n\ndata/hr_distance_leaders_2025.csv\ndata/combined_leaders_2025.csv\n\n\nNote: This step requires an internet connection and may take a minute to run."
+    "text": "Step 1: Generate the dataset\nThe analysis uses a combined hitter-level dataset saved as:\n\ndata/combined_leaders_2025.csv\n\nTo generate the dataset using the installed package, run the following command in your terminal:\npython3 -m stat386_project.fetch_data\nThis will:\n\nquery Statcast using pybaseball\nfilter to home runs\ncompute hitter-level summary statistics\nmerge in barrel metrics (downloaded automatically if not available locally)\ncreate:\n\ndata/hr_distance_leaders_2025.csv\ndata/combined_leaders_2025.csv\n\n\nNote: This step requires an internet connection and may take a minute to run."
   },
   {
     "objectID": "tutorial.html#step-2-load-and-prepare-the-data-in-python",
